@@ -1,0 +1,111 @@
+﻿<Window x:Class="WpfPixelRounding.Layout.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfPixelRounding.Layout"
+        mc:Ignorable="d"
+        Title="WPF Pixel Rounding: Layout"
+		Width="400" Height="300">
+	<Window.Resources>
+		<Style x:Key="OneGridStyle" TargetType="{x:Type ButtonBase}">
+			<Setter Property="Width" Value="40"/>
+			<Setter Property="Height" Value="40"/>
+			<Setter Property="Margin" Value="2"/>
+			<Setter Property="Background" Value="LightGray"/>
+			<Setter Property="Foreground" Value="Black"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ButtonBase}">
+						<Grid Background="{TemplateBinding Background}"
+							  SnapsToDevicePixels="True" UseLayoutRounding="True">
+							<Grid Width="10" Height="10"
+								  HorizontalAlignment="Center" VerticalAlignment="Center"
+								  IsHitTestVisible="False">
+								<Rectangle Fill="{TemplateBinding Foreground}" HorizontalAlignment="Left" Width="1" Height="10"/>
+								<Rectangle Fill="{TemplateBinding Foreground}" HorizontalAlignment="Right" Width="1" Height="10"/>
+								<Rectangle Fill="{TemplateBinding Foreground}" VerticalAlignment="Top" Width="10" Height="1"/>
+								<Rectangle Fill="{TemplateBinding Foreground}" VerticalAlignment="Bottom" Width="10" Height="1"/>
+							</Grid>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style x:Key="TwoGridStyle" TargetType="{x:Type ButtonBase}">
+			<Setter Property="Width" Value="40"/>
+			<Setter Property="Height" Value="40"/>
+			<Setter Property="Margin" Value="2"/>
+			<Setter Property="Background" Value="LightGray"/>
+			<Setter Property="Foreground" Value="Black"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ButtonBase}">
+						<Grid Background="{TemplateBinding Background}"
+							  SnapsToDevicePixels="True" UseLayoutRounding="True">
+							<Grid Width="11" Height="11"
+								  HorizontalAlignment="Center" VerticalAlignment="Center"
+								  IsHitTestVisible="False">
+								<Rectangle Fill="{TemplateBinding Foreground}" HorizontalAlignment="Left" Width="1" Height="11"/>
+								<Rectangle Fill="{TemplateBinding Foreground}" HorizontalAlignment="Center" Width="1" Height="11"/>
+								<Rectangle Fill="{TemplateBinding Foreground}" HorizontalAlignment="Right" Width="1" Height="11"/>
+								<Rectangle Fill="{TemplateBinding Foreground}" VerticalAlignment="Top" Width="11" Height="1"/>
+								<Rectangle Fill="{TemplateBinding Foreground}" VerticalAlignment="Center" Width="11" Height="1"/>
+								<Rectangle Fill="{TemplateBinding Foreground}" VerticalAlignment="Bottom" Width="11" Height="1"/>
+							</Grid>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style x:Key="ThreeGridStyle" TargetType="{x:Type ButtonBase}">
+			<Setter Property="Width" Value="40"/>
+			<Setter Property="Height" Value="40"/>
+			<Setter Property="Margin" Value="2"/>
+			<Setter Property="Background" Value="LightGray"/>
+			<Setter Property="Foreground" Value="Black"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ButtonBase}">
+						<Grid Background="{TemplateBinding Background}"
+							  SnapsToDevicePixels="True" UseLayoutRounding="True">
+							<Grid Width="13" Height="13"
+								  HorizontalAlignment="Center" VerticalAlignment="Center"
+								  IsHitTestVisible="False">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="5"/>
+									<ColumnDefinition Width="4"/>
+									<ColumnDefinition Width="4"/>
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="5"/>
+									<RowDefinition Height="4"/>
+									<RowDefinition Height="4"/>
+								</Grid.RowDefinitions>
+
+								<Rectangle Fill="{TemplateBinding Foreground}" Grid.ColumnSpan="1" Grid.RowSpan="3" HorizontalAlignment="Left" Width="1" Height="13"/>
+								<Rectangle Fill="{TemplateBinding Foreground}" Grid.ColumnSpan="1" Grid.RowSpan="3" HorizontalAlignment="Right" Width="1" Height="13"/>
+								<Rectangle Fill="{TemplateBinding Foreground}" Grid.ColumnSpan="2" Grid.RowSpan="3" HorizontalAlignment="Right" Width="1" Height="13"/>
+								<Rectangle Fill="{TemplateBinding Foreground}" Grid.ColumnSpan="3" Grid.RowSpan="3" HorizontalAlignment="Right" Width="1" Height="13"/>
+								<Rectangle Fill="{TemplateBinding Foreground}" Grid.ColumnSpan="3" Grid.RowSpan="1" VerticalAlignment="Top" Width="13" Height="1"/>
+								<Rectangle Fill="{TemplateBinding Foreground}" Grid.ColumnSpan="3" Grid.RowSpan="1" VerticalAlignment="Bottom" Width="13" Height="1"/>
+								<Rectangle Fill="{TemplateBinding Foreground}" Grid.ColumnSpan="3" Grid.RowSpan="2" VerticalAlignment="Bottom" Width="13" Height="1"/>
+								<Rectangle Fill="{TemplateBinding Foreground}" Grid.ColumnSpan="3" Grid.RowSpan="3" VerticalAlignment="Bottom" Width="13" Height="1"/>
+							</Grid>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Window.Resources>
+
+	<Grid SnapsToDevicePixels="True" UseLayoutRounding="True">
+		<StackPanel HorizontalAlignment="Center">
+			<Button Style="{StaticResource OneGridStyle}"/>
+			<Button Style="{StaticResource TwoGridStyle}"/>
+			<Button Style="{StaticResource ThreeGridStyle}"/>
+		</StackPanel>
+	</Grid>
+</Window>
